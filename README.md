@@ -89,8 +89,9 @@ the real edit is written.
 
 ## Removing it
 
-Run **Live Edits: Remove from Claude Code**, or uninstall the extension; uninstalling
-removes the hooks from `~/.claude/settings.json` too.
+Run **Live Edits: Remove from Claude Code**, or uninstall the extension. Uninstalling
+removes the hooks from `~/.claude/settings.json` too, unless Live Edits is still
+installed in another editor that uses them.
 
 ## Disclaimer
 

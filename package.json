@@ -2,7 +2,7 @@
   "name": "live-edits-for-claude-code",
   "displayName": "Live Edits for Claude Code",
   "description": "Watch Claude Code type its edits into your editor letter by letter: the old lines light up, get backspaced away, the new code is typed in, then you're back in the chat.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "kalpu71",
   "author": "Kalpesh Rane",
   "license": "MIT",

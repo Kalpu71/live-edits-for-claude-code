@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Uninstalling from one editor no longer removes the hooks while Live Edits is still
+  installed in another editor (for example both VS Code and Cursor).
+
 ## 0.1.0
 
 First public release.
