@@ -1,0 +1,141 @@
+{
+  "name": "live-edits-for-claude-code",
+  "displayName": "Live Edits for Claude Code",
+  "description": "Watch Claude Code type its edits into your editor letter by letter: the old lines light up, get backspaced away, the new code is typed in, then you're back in the chat.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "author": "Kalpesh Rane",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kalpu71/live-edits-for-claude-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kalpu71/live-edits-for-claude-code/issues"
+  },
+  "homepage": "https://github.com/Kalpu71/live-edits-for-claude-code#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "ai",
+    "typing",
+    "animation",
+    "live",
+    "edits",
+    "cursor"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "liveEdits.enable",
+        "title": "Turn On for Claude Code",
+        "category": "Live Edits"
+      },
+      {
+        "command": "liveEdits.disable",
+        "title": "Remove from Claude Code",
+        "category": "Live Edits"
+      },
+      {
+        "command": "liveEdits.toggle",
+        "title": "Pause / Resume",
+        "category": "Live Edits"
+      },
+      {
+        "command": "liveEdits.skip",
+        "title": "Skip to the End of This Edit",
+        "category": "Live Edits"
+      },
+      {
+        "command": "liveEdits.showLog",
+        "title": "Show Log",
+        "category": "Live Edits"
+      }
+    ],
+    "configuration": {
+      "title": "Live Edits for Claude Code",
+      "properties": {
+        "liveEdits.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Type out Claude Code's edits live. When off, edits apply instantly (the hooks stay installed)."
+        },
+        "liveEdits.typingSpeed": {
+          "type": "number",
+          "default": 14,
+          "minimum": 2,
+          "maximum": 200,
+          "description": "Typing speed in characters per second."
+        },
+        "liveEdits.deleteSpeed": {
+          "type": "number",
+          "default": 16,
+          "minimum": 2,
+          "maximum": 200,
+          "description": "Backspace speed in characters per second. Removals over 200 characters go line by line."
+        },
+        "liveEdits.pauseBefore": {
+          "type": "number",
+          "default": 1.8,
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Seconds the lines about to change stay highlighted in red before anything is deleted."
+        },
+        "liveEdits.pauseAfter": {
+          "type": "number",
+          "default": 2,
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Seconds the new lines stay highlighted in green after the edit."
+        },
+        "liveEdits.speedUpLongEdits": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Speed up edits that would take longer than `#liveEdits.maxTypingSeconds#`. When off, every edit, including whole new files, is typed at your typing speed (a single edit only speeds up past 12 minutes). You can always skip an edit from the status bar."
+        },
+        "liveEdits.maxTypingSeconds": {
+          "type": "number",
+          "default": 45,
+          "minimum": 1,
+          "maximum": 600,
+          "markdownDescription": "Longest a single edit is typed out when `#liveEdits.speedUpLongEdits#` is on. Bigger edits speed up to fit."
+        },
+        "liveEdits.closeFilesAfterEdit": {
+          "type": "boolean",
+          "default": true,
+          "description": "Close files that Live Edits opened once their edit is shown. Files you had open stay open."
+        },
+        "liveEdits.returnToChat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Switch back to the Claude Code chat after the last edit."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "typecheck": "tsc -p jsconfig.json",
+    "icon": "node tools/make-icon.js",
+    "package": "npx --yes @vscode/vsce@3.2.1 package",
+    "vscode:uninstall": "node ./src/uninstall.js"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.6",
+    "@types/vscode": "1.85.0",
+    "typescript": "5.6.3"
+  }
+}

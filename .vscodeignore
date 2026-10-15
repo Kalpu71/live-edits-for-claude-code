@@ -1,0 +1,10 @@
+.git/**
+.gitignore
+.vscode/**
+test/**
+tools/**
+*.vsix
+node_modules/**
+jsconfig.json
+package-lock.json
+media/demo.gif
